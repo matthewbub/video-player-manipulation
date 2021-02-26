@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <!-- <img src="./assets/logo.png"> -->
+    <!-- <HelloWorld/> -->
+    <MediaPlayer />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import MediaPlayer from './components/MediaPlayer';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
+    MediaPlayer,
   },
 };
 </script>
