@@ -26,7 +26,9 @@ import Controls from './Controls';
 
 export default {
   name: 'MediaPlayer',
-  components: { Controls },
+  components: {
+    Controls,
+  },
   mounted() {
     const video = document.querySelector('.video');
     const controls = document.querySelector('#controls');
@@ -34,9 +36,6 @@ export default {
 
     function watchTime() {
       if (controls.className === 'play') {
-        /**
-         * leaving intentionally
-         */
         // console.log({
         //   class_case: controls.className === 'play',
         //   timestamp,
@@ -46,8 +45,7 @@ export default {
 
         clearInterval(timestamp);
       } else if (controls.className === 'pause') {
-        // eslint-disable-next-line
-        timestamp = setInterval(function (){
+        timestamp = setInterval(() => {
           // eslint-disable-next-line
           console.log(video.currentTime)
         }, 100);

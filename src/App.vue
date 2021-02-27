@@ -16,7 +16,7 @@ import 'vue-material/dist/theme/default-dark.css';
 import HelloWorld from './components/HelloWorld';
 import MediaPlayer from './components/MediaPlayer/MediaPlayer';
 
-import CheckWindowOnResize from './Helpers/CheckWindowOnResize';
+import CheckWindowOnResize from './components/Helpers/CheckWindowOnResize';
 
 Vue.use(VueMaterial);
 
