@@ -2,7 +2,6 @@
   <div id="app">
     <main>
       <MediaPlayer />
-      <Controls />
     </main>
   </div>
 </template>
@@ -15,8 +14,9 @@ import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default-dark.css';
 
 import HelloWorld from './components/HelloWorld';
-import MediaPlayer from './components/MediaPlayer';
-import Controls from './components/Controls';
+import MediaPlayer from './components/MediaPlayer/MediaPlayer';
+
+import CheckWindowOnResize from './Helpers/CheckWindowOnResize';
 
 Vue.use(VueMaterial);
 
@@ -25,20 +25,20 @@ export default {
   components: {
     HelloWorld,
     MediaPlayer,
-    Controls,
+  },
+  created() {
+    window.addEventListener('resize', this.checkWindowOnResize);
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.checkWindowOnResize);
+  },
+  methods: {
+    checkWindowOnResize() {
+      CheckWindowOnResize();
+    },
   },
   mounted() {
-    const resize = () => {
-      const accessibleHeight = window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight;
-
-      document.querySelector('main').style.height = `${accessibleHeight}px`;
-    };
-
-    resize();
-
-    setInterval(resize(), 100);
+    CheckWindowOnResize();
   },
 };
 </script>

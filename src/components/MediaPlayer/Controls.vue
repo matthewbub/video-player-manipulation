@@ -20,6 +20,7 @@ export default {
   methods: {
     toggleControl(ev) {
       const video = document.querySelector('.video');
+
       if (ev.target.innerText === 'Play') {
         video.play();
         this.msg = 'Pause';
@@ -37,4 +38,18 @@ export default {
   button {
     display: block;
   }
-</style>
+
+  .play {
+    background-image: url("../../assets/play-button.svg");
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    display: block;
+  }
+
+  .pause {
+    background-image: url("../../assets/pause.svg");
+    background-repeat: no-repeat;
+    padding-left: 30px;
+    display: block;
+  }
+</style>>
