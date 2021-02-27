@@ -1,16 +1,21 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <!-- <HelloWorld/> -->
     <MediaPlayer />
     <Controls/>
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import VueMaterial from 'vue-material';
+
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default-dark.css';
 import HelloWorld from './components/HelloWorld';
 import MediaPlayer from './components/MediaPlayer';
 import Controls from './components/Controls';
+
+Vue.use(VueMaterial);
 
 export default {
   name: 'App',
