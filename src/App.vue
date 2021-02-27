@@ -28,11 +28,17 @@ export default {
     Controls,
   },
   mounted() {
-    const accessibleHeight = window.innerHeight
-      || document.documentElement.clientHeight
-      || document.body.clientHeight;
+    const resize = () => {
+      const accessibleHeight = window.innerHeight
+        || document.documentElement.clientHeight
+        || document.body.clientHeight;
 
-    document.querySelector('main').style.height = `${accessibleHeight}px`;
+      document.querySelector('main').style.height = `${accessibleHeight}px`;
+    };
+
+    resize();
+
+    setInterval(resize(), 100);
   },
 };
 </script>
