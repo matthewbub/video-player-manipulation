@@ -1,12 +1,20 @@
 <template>
-  <video controls width="250">
-    <source class="video-webm" src="../assets/big_buck_bunny.webm"
+  <video
+    controls
+    width="250"
+    class="video"
+  >
+    <source
+      class="video-webm"
+      src="../assets/big_buck_bunny.webm"
       type="video/webm"
     >
-    <source class="video-mp4" src="../assets/big_buck_bunny.mp4"
+    <source
+      class="video-mp4"
+      src="../assets/big_buck_bunny.mp4"
       type="video/mp4"
     >
-    Sorry, your browser doesn't support embedded videos.
+    Sorry, your browser doesn't support embedded videos. :(
   </video>
 </template>
 

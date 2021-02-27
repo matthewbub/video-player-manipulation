@@ -19,10 +19,13 @@ export default {
   },
   methods: {
     toggleControl(ev) {
+      const video = document.querySelector('.video');
       if (ev.target.innerText === 'Play') {
+        video.play();
         this.msg = 'Pause';
         this.play = false;
       } else {
+        video.pause();
         this.msg = 'Play';
         this.play = true;
       }
