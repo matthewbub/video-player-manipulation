@@ -26,7 +26,34 @@ import Controls from './Controls';
 
 export default {
   name: 'MediaPlayer',
-  components: { Controls },
+  components: {
+    Controls,
+  },
+  mounted() {
+    const video = document.querySelector('.video');
+    const controls = document.querySelector('#controls');
+    let timestamp;
+
+    function watchTime() {
+      if (controls.className === 'play') {
+        // console.log({
+        //   class_case: controls.className === 'play',
+        //   timestamp,
+        //   clearInterval: clearInterval(timestamp),
+        //   issue: 'scope'
+        // });
+
+        clearInterval(timestamp);
+      } else if (controls.className === 'pause') {
+        timestamp = setInterval(() => {
+          // eslint-disable-next-line
+          console.log(video.currentTime)
+        }, 100);
+      }
+    }
+
+    controls.onclick = () => watchTime();
+  },
 };
 </script>
 
