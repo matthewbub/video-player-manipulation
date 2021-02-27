@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import MediaPlayer from '@/components/MediaPlayer';
+import MediaPlayer from '@/components/MediaPlayer/MediaPlayer';
 
 describe('MediaPlayer.vue', () => {
   it('should render .webm extension', () => {

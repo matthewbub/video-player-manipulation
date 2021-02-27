@@ -40,14 +40,14 @@ export default {
   }
 
   .play {
-    background-image: url("../assets/play-button.svg");
+    background-image: url("../../assets/play-button.svg");
     background-repeat: no-repeat;
     padding-left: 30px;
     display: block;
   }
 
   .pause {
-    background-image: url("../assets/pause.svg");
+    background-image: url("../../assets/pause.svg");
     background-repeat: no-repeat;
     padding-left: 30px;
     display: block;
