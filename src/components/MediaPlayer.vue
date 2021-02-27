@@ -1,7 +1,6 @@
 <template>
   <video
     controls
-    width="250"
     class="video"
   >
     <source
@@ -24,9 +23,8 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  video {
-    display: block;
+  .video {
+    height: 50%;
   }
 </style>
