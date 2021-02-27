@@ -15,7 +15,8 @@
     "postinstall": "husky install"
   },
   "dependencies": {
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue-material": "^1.0.0-beta-15"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
