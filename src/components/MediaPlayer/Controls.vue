@@ -1,5 +1,6 @@
 <template>
   <button
+    id="controls"
     type="button"
     @click="toggleControl"
     v-bind:class="[ play ? 'play' : 'pause' ]"
