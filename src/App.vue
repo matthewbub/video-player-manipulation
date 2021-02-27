@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <MediaPlayer />
-    <Controls />
+    <main>
+      <MediaPlayer />
+      <Controls />
+    </main>
   </div>
 </template>
 
@@ -25,16 +27,21 @@ export default {
     MediaPlayer,
     Controls,
   },
+  mounted() {
+    const accessibleHeight = window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
+
+    document.querySelector('main').style.height = `${accessibleHeight}px`;
+  },
 };
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
