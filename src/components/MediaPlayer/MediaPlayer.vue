@@ -36,21 +36,19 @@ export default {
 
     function watchTime() {
       if (controls.className === 'play') {
-        // console.log({
-        //   class_case: controls.className === 'play',
-        //   timestamp,
-        //   clearInterval: clearInterval(timestamp),
-        //   issue: 'scope'
-        // });
-
         clearInterval(timestamp);
       } else if (controls.className === 'pause') {
-        timestamp = setInterval(() => {
-          // eslint-disable-next-line
-          console.log(video.currentTime)
-        }, 100);
+        // eslint-disable-next-line
+        timestamp = setInterval(() => console.log(video.currentTime), 100);
       }
     }
+
+    function getVideoLength() {
+      // eslint-disable-next-line
+      console.log(video.duration);
+    }
+
+    video.onloadedmetadata = () => getVideoLength();
 
     controls.onclick = () => watchTime();
   },
