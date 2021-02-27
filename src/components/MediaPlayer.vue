@@ -1,9 +1,9 @@
 <template>
   <video controls width="250">
-    <source src="../assets/big_buck_bunny.webm"
+    <source class="video-webm" src="../assets/big_buck_bunny.webm"
       type="video/webm"
     >
-    <source src="../assets/big_buck_bunny.mp4"
+    <source class="video-mp4" src="../assets/big_buck_bunny.mp4"
       type="video/mp4"
     >
     Sorry, your browser doesn't support embedded videos.
@@ -13,11 +13,6 @@
 <script>
 export default {
   name: 'MediaPlayer',
-  // data() {
-  //   return {
-  //     msg: 'Welcome to Your Vue.js App',
-  //   };
-  // },
 };
 </script>
 
