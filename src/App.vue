@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <!-- <HelloWorld/> -->
     <MediaPlayer />
     <Controls/>
   </div>
@@ -10,7 +8,7 @@
 <script>
 import Vue from 'vue';
 import VueMaterial from 'vue-material';
-// Breaking test suites 🤔
+
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default-dark.css';
 import HelloWorld from './components/HelloWorld';
