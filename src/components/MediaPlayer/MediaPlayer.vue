@@ -40,14 +40,28 @@ export default {
 
     let timestamp;
 
-    function watchTime() {
+    const watchComments = (currentTime) => {
+      const comments = this.$props.comments;
+      const activeComments = [];
+
+      for (let i = 0; i < comments.length; i += 1) {
+        if (currentTime > comments[i].timestamp) {
+          activeComments.push(comments[i]);
+        }
+      }
+
+      // eslint-disable-next-line
+      console.log(activeComments)
+    };
+
+    const watchTime = () => {
       if (controls.className === 'play') {
         clearInterval(timestamp);
       } else if (controls.className === 'pause') {
         // eslint-disable-next-line
-        timestamp = setInterval(() => console.log(video.currentTime), 100);
+        timestamp = setInterval(() => watchComments(video.currentTime), 100);
       }
-    }
+    };
 
     // eslint-disable-next-line
     const getVideoLength = () => console.log(video.duration);
