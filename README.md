@@ -27,17 +27,26 @@ npm run unit
 npm test
 ```
 
-<summary>
-  <details>Alt resources that helped here<details>
-
-  - http://commments.com/ 
-  - https://www.flaticon.com/ 
-
-</summary>
+<details open>
+  <summary>Alt Resourses</summary>
+  <ol>
+    <li>
+      <a href-"http://commments.com/">
+        http://commments.com/
+      </a>
+    </li>
+    <li>
+      <a href-"https://www.flaticon.com/">
+        https://www.flaticon.com/
+      </a>
+    </li>
+  </ol>
+</details>
 
 <p align="center">
   <a href="hi-matbub.github.io" target="_blank">
     Matthew Bub
   </a>
 </p>
+
 
