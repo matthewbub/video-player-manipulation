@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <main>
-      <MediaPlayer :comments="comments.map((i) => i)" />
-      <Comments :comments="comments.map((i) => i)" />
+      <MediaPlayer :comments="comments" />
     </main>
   </div>
 </template>
@@ -15,11 +14,12 @@ import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default-dark.css';
 
 import HelloWorld from './components/HelloWorld';
-import MediaPlayer from './components/MediaPlayer/MediaPlayer';
-import Comments from './components/Comments';
-import dummyComments from './components/Helpers/comments.json';
 
-import CheckWindowOnResize from './components/Helpers/CheckWindowOnResize';
+import MediaPlayer from './components/MediaPlayer/';
+import {
+  dummyComments,
+  checkWindowOnResize,
+} from './components/helpers/';
 
 Vue.use(VueMaterial);
 
@@ -28,16 +28,11 @@ export default {
   components: {
     HelloWorld,
     MediaPlayer,
-    Comments,
   },
   created: () => window.addEventListener('resize', this.checkWindowOnResize),
   destroyed: () => window.removeEventListener('resize', this.checkWindowOnResize),
-  mounted: () => CheckWindowOnResize(),
-  methods: {
-    checkWindowOnResize() {
-      CheckWindowOnResize();
-    },
-  },
+  mounted: () => checkWindowOnResize(),
+  methods: { checkWindowOnResize },
   data: () => ({ comments: dummyComments }),
 };
 </script>

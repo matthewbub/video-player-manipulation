@@ -17,20 +17,27 @@
       Sorry, your browser doesn't support embedded videos. :(
     </video>
     <Controls />
+    <Comments :comments="comments.map((i) => i)" />
   </div>
 </template>
 
 <script>
 import Controls from './Controls';
+import Comments from './Comments';
 
 export default {
   name: 'MediaPlayer',
   components: {
     Controls,
+    Comments,
   },
   mounted() {
-    const video = document.querySelector('.video');
-    const controls = document.querySelector('#controls');
+    const elements = {
+      video: document.querySelector('.video'),
+      controls: document.querySelector('#controls'),
+    };
+    const { video, controls } = elements;
+
     let timestamp;
 
     function watchTime() {
@@ -42,10 +49,8 @@ export default {
       }
     }
 
-    function getVideoLength() {
-      // eslint-disable-next-line
-      console.log(video.duration);
-    }
+    // eslint-disable-next-line
+    const getVideoLength = () => console.log(video.duration);
 
     video.onloadedmetadata = () => getVideoLength();
 

@@ -10,7 +10,7 @@
         <br>
         <span class="authored_by">{{ comment.authored_by }}</span>
       </div>
-      <button @click="handleClose(comment.id)">
+      <button @click="handleClick(comment.id)">
         x
       </button>
     </li>
@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { handleClick } from '../helpers/';
+
 export default {
   name: 'Comments',
   props: {
@@ -26,21 +28,11 @@ export default {
     },
   },
   data: () => ({ isOpen: true }),
-  methods: {
-    handleClose(comment) {
-      const comments = document.querySelectorAll('.comment-li');
-
-      for (let i = 0; i < comments.length; i += 1) {
-        if (comment === comments[i].id) {
-          comments[i].className += ' hidden';
-        }
-      }
-    },
-  },
+  methods: { handleClick },
 };
 </script>
-<style>
 
+<style>
 .md-tooltip {
   height: fit-content !important;
   padding: 4px;
