@@ -36,8 +36,9 @@ export default {
     const elements = {
       video: document.querySelector('.video'),
       controls: document.querySelector('#controls'),
+      comments: this.$props.comments,
     };
-    const { video, controls } = elements;
+    const { video, controls, comments } = elements;
 
     let timestamp;
 
@@ -46,8 +47,12 @@ export default {
         clearInterval(timestamp);
       } else if (controls.className === 'pause') {
         // eslint-disable-next-line
-        timestamp = setInterval(() => watchComments(video.currentTime, this.$props.comments), 100);
+        timestamp = setInterval(() => watchComments(video.currentTime, comments), 100);
       }
+    };
+
+    video.onseeking = () => {
+      watchComments(video.currentTime, comments);
     };
 
     // eslint-disable-next-line
