@@ -24,6 +24,7 @@
 <script>
 import Controls from './Controls';
 import Comments from './Comments';
+import { watchComments } from '../helpers/';
 
 export default {
   name: 'MediaPlayer',
@@ -40,43 +41,18 @@ export default {
 
     let timestamp;
 
-    const watchComments = (currentTime) => {
-      const comments = this.$props.comments;
-      const activeComments = [];
-
-      // attach comment to video via timestamp
-      for (let i = 0; i < comments.length; i += 1) {
-        if (currentTime > comments[i].timestamp) {
-          activeComments.push(comments[i]);
-        }
-      }
-
-      // visually display active comments
-      for (let i = 0; i < activeComments.length; i += 1) {
-        const commentsOnDom = document.querySelectorAll('.comment-li');
-
-        for (let j = 0; j < commentsOnDom.length; j += 1) {
-          if (activeComments[i].id === commentsOnDom[j].id) {
-            // comment is active
-            commentsOnDom[j].className = 'comment-li';
-          }
-        }
-      }
-    };
-
     const watchTime = () => {
       if (controls.className === 'play') {
         clearInterval(timestamp);
       } else if (controls.className === 'pause') {
         // eslint-disable-next-line
-        timestamp = setInterval(() => watchComments(video.currentTime), 100);
+        timestamp = setInterval(() => watchComments(video.currentTime, this.$props.comments), 100);
       }
     };
 
     // eslint-disable-next-line
-    const getVideoLength = () => console.log(video.duration);
-
-    video.onloadedmetadata = () => getVideoLength();
+    // const getVideoLength = () => console.log(video.duration);
+    // video.onloadedmetadata = () => getVideoLength();
 
     controls.onclick = () => watchTime();
   },
