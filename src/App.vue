@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <main>
-      <MediaPlayer />
-      <Comments />
+      <MediaPlayer :comments="comments" />
     </main>
   </div>
 </template>
@@ -15,10 +14,12 @@ import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default-dark.css';
 
 import HelloWorld from './components/HelloWorld';
-import MediaPlayer from './components/MediaPlayer/MediaPlayer';
-import Comments from './components/Comments';
 
-import CheckWindowOnResize from './components/Helpers/CheckWindowOnResize';
+import MediaPlayer from './components/MediaPlayer/';
+import {
+  dummyComments,
+  checkWindowOnResize,
+} from './components/helpers/';
 
 Vue.use(VueMaterial);
 
@@ -27,22 +28,12 @@ export default {
   components: {
     HelloWorld,
     MediaPlayer,
-    Comments,
   },
-  created() {
-    window.addEventListener('resize', this.checkWindowOnResize);
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.checkWindowOnResize);
-  },
-  methods: {
-    checkWindowOnResize() {
-      CheckWindowOnResize();
-    },
-  },
-  mounted() {
-    CheckWindowOnResize();
-  },
+  created: () => window.addEventListener('resize', this.checkWindowOnResize),
+  destroyed: () => window.removeEventListener('resize', this.checkWindowOnResize),
+  mounted: () => checkWindowOnResize(),
+  methods: { checkWindowOnResize },
+  data: () => ({ comments: dummyComments }),
 };
 </script>
 

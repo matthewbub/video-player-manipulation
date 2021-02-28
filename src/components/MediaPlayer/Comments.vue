@@ -1,25 +1,38 @@
 <template>
-  <ul>
-    <li v-for="comment in dummyComments" :key="comment._id">
+  <ul class="list-of-comments">
+    <li v-for="comment in comments"
+      :key="comment.id"
+      :id="comment.id"
+      class="comment-li"
+    >
       <div class="md-accent">
         <span class="comment">{{ comment.comment }}</span>
         <br>
         <span class="authored_by">{{ comment.authored_by }}</span>
       </div>
+      <button @click="handleClick(comment.id)">
+        x
+      </button>
     </li>
   </ul>
 </template>
 
 <script>
-import dummyComments from './Helpers/comments.json';
+import { handleClick } from '../helpers/';
 
 export default {
   name: 'Comments',
-  data: () => ({ dummyComments }),
+  props: {
+    comments: {
+      type: Array,
+    },
+  },
+  data: () => ({ isOpen: true }),
+  methods: { handleClick },
 };
 </script>
-<style>
 
+<style>
 .md-tooltip {
   height: fit-content !important;
   padding: 4px;
@@ -33,4 +46,7 @@ export default {
   font-size: 1.2vw;
 }
 
+.hidden {
+  display: none;
+}
 </style>

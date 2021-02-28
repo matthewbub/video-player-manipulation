@@ -1,54 +1,54 @@
 [
   {
-    "_id": "7bbd6e06-3e0a-431f-bfba-a34c464cc8ca",
+    "id": "7bbd6e06-3e0a-431f-bfba-a34c464cc8ca",
     "authored_by": "coffee_user",
     "comment": "Let me take a nap... great spaces, anyway.",
     "timestamp": 1.546
   },
   {
-    "_id": "76f230df-94c8-4087-a58b-a7d7cb859b55",
+    "id": "76f230df-94c8-4087-a58b-a7d7cb859b55",
     "authored_by": "milkyway",
     "comment": "Truly thought out! You are so inspiring!",
     "timestamp": 9.232
   },
   {
-    "_id": "bf53a5b4-fc97-4f84-ad46-93bf9e1f5129",
+    "id": "bf53a5b4-fc97-4f84-ad46-93bf9e1f5129",
     "authored_by": "professor_fansworth",
     "comment": "This camera angle has navigated right into my heart.",
     "timestamp": 12.752
   },
   {
-    "_id": "974763ad-2dba-43c9-8d07-f3ef202fd3b9",
+    "id": "974763ad-2dba-43c9-8d07-f3ef202fd3b9",
     "authored_by": "doughnuts_fanatic",
     "comment": "Fun. So Sublime",
     "timestamp": 23.1435
   },
   {
-    "_id": "9a4582ef-1370-40cd-b7ec-0b9b19af353f",
+    "id": "9a4582ef-1370-40cd-b7ec-0b9b19af353f",
     "authored_by": "awesome_friendly_user",
     "comment": "Mission accomplished. It's magnificent :-)",
     "timestamp": 26.4
   },
   {
-    "_id": "7d4d1770-9263-4358-a88d-74853f3fcd2b",
+    "id": "7d4d1770-9263-4358-a88d-74853f3fcd2b",
     "authored_by": "basketball_2021",
     "comment": "This is good work :-)",
     "timestamp": 34.353
   },
   {
-    "_id": "71ce5b91-1532-4ecc-97fe-27f9d9938d29",
+    "id": "71ce5b91-1532-4ecc-97fe-27f9d9938d29",
     "authored_by": "my_mom",
     "comment": "This shot blew my mind.",
     "timestamp": 42.4217
   },
   {
-    "_id": "702158e5-c823-4669-ac59-ddb9128f7d3a",
+    "id": "702158e5-c823-4669-ac59-ddb9128f7d3a",
     "authored_by": "the_perfectionist",
     "comment": "Sleek work you have here.",
     "timestamp": 49.81
   },
   {
-    "_id": "28503d4d-b905-4741-a5ac-f2763b594dea",
+    "id": "28503d4d-b905-4741-a5ac-f2763b594dea",
     "authored_by": "the_minimalist",
     "comment": "Looks simple and minimal!!",
     "timestamp": 55.722

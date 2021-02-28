@@ -1,4 +1,4 @@
-function CheckWindowOnResize() {
+const checkWindowOnResize = () => {
   const accessibleHeight = (
     window.innerHeight
     || document.documentElement.clientHeight
@@ -18,6 +18,6 @@ function CheckWindowOnResize() {
     height: accessibleHeight,
     width: accessibleWidth,
   };
-}
+};
 
-export default CheckWindowOnResize;
+export default checkWindowOnResize;
