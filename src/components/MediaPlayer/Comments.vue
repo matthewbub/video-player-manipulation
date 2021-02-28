@@ -3,7 +3,7 @@
     <li v-for="comment in comments"
       :key="comment.id"
       :id="comment.id"
-      class="comment-li"
+      class="comment-li hidden"
     >
       <div class="md-accent">
         <span class="comment">{{ comment.comment }}</span>
