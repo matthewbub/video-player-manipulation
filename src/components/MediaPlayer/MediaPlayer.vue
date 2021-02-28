@@ -16,7 +16,6 @@
       >
       Sorry, your browser doesn't support embedded videos. :(
     </video>
-
     <Controls />
   </div>
 </template>
@@ -51,6 +50,11 @@ export default {
     video.onloadedmetadata = () => getVideoLength();
 
     controls.onclick = () => watchTime();
+  },
+  props: {
+    comments: {
+      type: Array,
+    },
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="comment in dummyComments" :key="comment._id">
+    <li v-for="comment in comments" :key="comment.id">
       <div class="md-accent">
         <span class="comment">{{ comment.comment }}</span>
         <br>
@@ -11,11 +11,13 @@
 </template>
 
 <script>
-import dummyComments from './Helpers/comments.json';
-
 export default {
   name: 'Comments',
-  data: () => ({ dummyComments }),
+  props: {
+    comments: {
+      type: Array,
+    },
+  },
 };
 </script>
 <style>
