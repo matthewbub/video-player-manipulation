@@ -2,6 +2,7 @@
   <div id="app">
     <main>
       <MediaPlayer />
+      <Comments />
     </main>
   </div>
 </template>
@@ -15,6 +16,7 @@ import 'vue-material/dist/theme/default-dark.css';
 
 import HelloWorld from './components/HelloWorld';
 import MediaPlayer from './components/MediaPlayer/MediaPlayer';
+import Comments from './components/Comments';
 
 import CheckWindowOnResize from './components/Helpers/CheckWindowOnResize';
 
@@ -25,6 +27,7 @@ export default {
   components: {
     HelloWorld,
     MediaPlayer,
+    Comments,
   },
   created() {
     window.addEventListener('resize', this.checkWindowOnResize);

@@ -27,8 +27,17 @@ npm run unit
 npm test
 ```
 
+<summary>
+  <details>Alt resources that helped here<details>
+
+  - http://commments.com/ 
+  - https://www.flaticon.com/ 
+
+</summary>
+
 <p align="center">
   <a href="hi-matbub.github.io" target="_blank">
     Matthew Bub
   </a>
 </p>
+
