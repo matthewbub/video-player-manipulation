@@ -25,7 +25,7 @@
 <script>
 import Controls from './Controls';
 import Comments from './Comments';
-import { watchComments } from '../helpers/';
+import { watchComments, isVideoPlaying } from '../helpers/';
 
 export default {
   name: 'MediaPlayer',
@@ -39,6 +39,7 @@ export default {
       controls: document.querySelector('#controls'),
       comments: this.$props.comments,
     };
+
     const { video, controls, comments } = elements;
 
     let timestamp;
@@ -51,8 +52,14 @@ export default {
       }
     };
 
-    video.onseeking = () => watchComments(video.currentTime, comments);
+    // gives accessibility for default video controls and space bar
+    setInterval(() => {
+      if (isVideoPlaying(video)) {
+        watchComments(video.currentTime, comments);
+      }
+    }, 500);
 
+    video.onseeking = () => watchComments(video.currentTime, comments);
     controls.onclick = () => watchTime();
   },
   props: {
