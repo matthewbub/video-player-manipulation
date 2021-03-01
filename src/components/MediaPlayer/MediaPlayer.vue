@@ -2,6 +2,7 @@
   <div class="md-elevation-12">
     <video
       controls
+      muted
       class="video"
     >
       <source
@@ -46,18 +47,11 @@ export default {
       if (controls.className === 'play') {
         clearInterval(timestamp);
       } else if (controls.className === 'pause') {
-        // eslint-disable-next-line
         timestamp = setInterval(() => watchComments(video.currentTime, comments), 100);
       }
     };
 
-    video.onseeking = () => {
-      watchComments(video.currentTime, comments);
-    };
-
-    // eslint-disable-next-line
-    // const getVideoLength = () => console.log(video.duration);
-    // video.onloadedmetadata = () => getVideoLength();
+    video.onseeking = () => watchComments(video.currentTime, comments);
 
     controls.onclick = () => watchTime();
   },
