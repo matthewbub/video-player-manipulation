@@ -1,12 +1,12 @@
 <template>
-  <button
+  <md-button
     id="controls"
     type="button"
-    @click="toggleControl"
+    @click.native="toggleControl"
     v-bind:class="[ play ? 'play' : 'pause' ]"
   >
     {{ msg }}
-  </button>
+  </md-button>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
     toggleControl(ev) {
       const video = document.querySelector('.video');
 
-      if (ev.target.innerText === 'Play') {
+      if (ev.target.innerText === 'PLAY') {
         video.play();
         this.msg = 'Pause';
         this.play = false;
