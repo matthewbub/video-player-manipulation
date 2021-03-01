@@ -4,6 +4,7 @@ import handleClick from './handleClick';
 import watchComments from './watchComments';
 import clearComments from './clearComments';
 import handleDisplay from './handleDisplay';
+import isVideoPlaying from './isVideoPlaying';
 
 export {
   dummyComments,
@@ -12,4 +13,5 @@ export {
   watchComments,
   clearComments,
   handleDisplay,
+  isVideoPlaying,
 };
