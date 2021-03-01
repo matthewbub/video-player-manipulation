@@ -36,10 +36,6 @@ export default {
 };
 </script>
 <style scoped>
-  button {
-    display: block;
-  }
-
   .play {
     background-image: url("../../assets/play-button.svg");
     background-repeat: no-repeat;
