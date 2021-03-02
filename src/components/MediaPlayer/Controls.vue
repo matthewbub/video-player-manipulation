@@ -1,12 +1,14 @@
 <template>
-  <md-button
-    id="controls"
-    type="button"
-    @click.native="toggleControl"
-    v-bind:class="[ play ? 'play' : 'pause' ]"
-  >
-    {{ msg }}
-  </md-button>
+  <div class="controls">
+    <md-button
+      id="controls"
+      type="button"
+      @click.native="toggleControl"
+      v-bind:class="[ play ? 'play' : 'pause' ]"
+    >
+      {{ msg }}
+    </md-button>
+  </div>
 </template>
 
 <script>
@@ -36,20 +38,20 @@ export default {
 };
 </script>
 <style scoped>
-  .play, .pause {
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: 26px;
-    background-position-x: .4em;
-    padding-left: 30px;
-    display: block;
-  }
+.play, .pause {
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 26px;
+  background-position-x: .4em;
+  padding-left: 30px;
+  width: fit-content;
+}
 
-  .play {
-    background-image: url("../../assets/play-button.svg");
-  }
+.play {
+  background-image: url("../../assets/play-button.svg");
+}
 
-  .pause {
-    background-image: url("../../assets/pause.svg");
-  }
+.pause {
+  background-image: url("../../assets/pause.svg");
+}
 </style>>

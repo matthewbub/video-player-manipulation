@@ -11,8 +11,8 @@ const checkWindowOnResize = () => {
     || document.body.clientWidth
   );
 
-  // keep's the <main> height at 100% without explicitly defining parent height
-  document.querySelector('main').style.height = `${accessibleHeight}px`;
+  // keep's the <div class="grid"> height at 100% without explicitly defining parent height
+  document.querySelector('.grid').style.height = `${accessibleHeight}px`;
 
   return {
     height: accessibleHeight,

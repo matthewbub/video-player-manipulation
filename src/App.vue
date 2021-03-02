@@ -3,6 +3,9 @@
     <main>
       <MediaPlayer :comments="comments" />
     </main>
+    <footer>
+      {{ year.year }}
+    </footer>
   </div>
 </template>
 
@@ -34,14 +37,28 @@ export default {
   mounted: () => checkWindowOnResize(),
   methods: { checkWindowOnResize },
   data: () => ({ comments: dummyComments }),
+  computed: {
+    year: () => {
+      const date = new Date();
+      const year = date.getFullYear();
+      return { year };
+    },
+  },
 };
 </script>
 
 <style>
-  main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
 </style>
