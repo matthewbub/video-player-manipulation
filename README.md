@@ -30,8 +30,6 @@ npm test
 ### Scaling this app
 As the ammount of comments grow, a sorting algoritihm to would be needed to prevent slowing as setIntervals will get expensive. 
 
-Would like to only run 
-
 <details open>
   <summary>Alt Resourses</summary>
   <ol>

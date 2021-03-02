@@ -1,25 +1,17 @@
 <template>
-  <ul class="list-of-comments">
-    <li v-for="comment in comments"
+  <div class="list-of-comments">
+    <div v-for="comment in comments"
       :key="comment.id"
       :id="comment.id"
-      class="comment-li hidden"
+      class="comment-li md-elevation-8 hidden"
     >
-      <div class="md-accent">
-        <span class="comment">{{ comment.comment }}</span>
-        <br>
-        <span class="authored_by">{{ comment.authored_by }}</span>
-      </div>
-      <button @click="handleClick(comment.id)">
-        x
-      </button>
-    </li>
-  </ul>
+      <span class="comment md-headline">{{ comment.comment }}</span>
+      <span class="authored_by md-caption">{{ comment.authored_by }}</span>
+    </div>
+  </div>
 </template>
 
 <script>
-import { handleClick } from '../helpers/';
-
 export default {
   name: 'Comments',
   props: {
@@ -28,25 +20,25 @@ export default {
     },
   },
   data: () => ({ isOpen: true }),
-  methods: { handleClick },
 };
 </script>
 
 <style>
-.md-tooltip {
-  height: fit-content !important;
-  padding: 4px;
-}
-
-.comment {
-  font-size: 2vw;
-}
-
-.authored_by {
-  font-size: 1.2vw;
-}
-
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+.comment-li {
+  background: rgba(6, 214, 160, .9);
+  width: fit-content;
+  margin: 2px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-li > span:last-child {
+  align-self: flex-end;
 }
 </style>
