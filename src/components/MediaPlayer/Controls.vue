@@ -1,12 +1,12 @@
 <template>
-  <button
+  <md-button
     id="controls"
     type="button"
-    @click="toggleControl"
+    @click.native="toggleControl"
     v-bind:class="[ play ? 'play' : 'pause' ]"
   >
     {{ msg }}
-  </button>
+  </md-button>
 </template>
 
 <script>
@@ -22,7 +22,7 @@ export default {
     toggleControl(ev) {
       const video = document.querySelector('.video');
 
-      if (ev.target.innerText === 'Play') {
+      if (ev.target.innerText === 'PLAY') {
         video.play();
         this.msg = 'Pause';
         this.play = false;
@@ -36,17 +36,20 @@ export default {
 };
 </script>
 <style scoped>
-  .play {
-    background-image: url("../../assets/play-button.svg");
+  .play, .pause {
     background-repeat: no-repeat;
+    background-position: left;
+    background-size: 26px;
+    background-position-x: .4em;
     padding-left: 30px;
     display: block;
   }
 
+  .play {
+    background-image: url("../../assets/play-button.svg");
+  }
+
   .pause {
     background-image: url("../../assets/pause.svg");
-    background-repeat: no-repeat;
-    padding-left: 30px;
-    display: block;
   }
 </style>>
