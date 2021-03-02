@@ -12,7 +12,7 @@ const checkWindowOnResize = () => {
   );
 
   // keep's the <div class="grid"> height at 100% without explicitly defining parent height
-  document.querySelector('.grid').style.height = `${accessibleHeight}px`;
+  document.querySelector('.video-wrapper').style.height = `${accessibleHeight}px`;
 
   return {
     height: accessibleHeight,

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="grid">
-      <section class="video-wrapper">
+    <section class="video-wrapper">
+      <div class="video-sub-wrapper">
         <video
           controls
           muted
@@ -20,11 +20,9 @@
           Sorry, your browser doesn't support embedded videos. :(
         </video>
         <Controls />
-      </section>
-      <div class="comment-wrapper">
-        <Comments :comments="comments.map((i) => i)" />
       </div>
-    </div>
+    </section>
+    <Comments :comments="comments.map((i) => i)" />
   </div>
 </template>
 
@@ -82,14 +80,7 @@ export default {
   width: fit-content;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 60% 40%;
-  gap: 0px 12px;
-}
-
-.video-wrapper,
-.comment-wrapper {
+.video-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
