@@ -36,17 +36,20 @@ export default {
 };
 </script>
 <style scoped>
-  .play {
-    background-image: url("../../assets/play-button.svg");
+  .play, .pause {
     background-repeat: no-repeat;
+    background-position: left;
+    background-size: 26px;
+    background-position-x: .4em;
     padding-left: 30px;
     display: block;
   }
 
+  .play {
+    background-image: url("../../assets/play-button.svg");
+  }
+
   .pause {
     background-image: url("../../assets/pause.svg");
-    background-repeat: no-repeat;
-    padding-left: 30px;
-    display: block;
   }
 </style>>
