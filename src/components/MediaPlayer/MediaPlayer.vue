@@ -1,24 +1,28 @@
 <template>
-  <div class="md-elevation-12">
-    <video
-      controls
-      muted
-      class="video"
-    >
-      <source
-        class="video-webm"
-        src="../../assets/big_buck_bunny.webm"
-        type="video/webm"
+  <div class="grid">
+    <section class="video-wrapper">
+      <video
+        controls
+        muted
+        class="video md-elevation-12"
       >
-      <source
-        class="video-mp4"
-        src="../../assets/big_buck_bunny.mp4"
-        type="video/mp4"
-      >
-      Sorry, your browser doesn't support embedded videos. :(
-    </video>
-    <Controls />
-    <Comments :comments="comments.map((i) => i)" />
+        <source
+          class="video-webm"
+          src="../../assets/big_buck_bunny.webm"
+          type="video/webm"
+        >
+        <source
+          class="video-mp4"
+          src="../../assets/big_buck_bunny.mp4"
+          type="video/mp4"
+        >
+        Sorry, your browser doesn't support embedded videos. :(
+      </video>
+      <Controls />
+    </section>
+    <div class="comment-wrapper">
+      <Comments :comments="comments.map((i) => i)" />
+    </div>
   </div>
 </template>
 
@@ -71,7 +75,22 @@ export default {
 </script>
 
 <style scoped>
-  .video {
-    height: 100%;
-  }
+.video {
+  height: fit-content;
+  width: fit-content;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  gap: 0px 12px;
+}
+
+.video-wrapper,
+.comment-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>
