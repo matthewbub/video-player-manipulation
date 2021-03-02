@@ -3,6 +3,8 @@
     <div v-for="comment in comments"
       :key="comment.id"
       :id="comment.id"
+      draggable
+      @dragstart='startDrag($event, comment)'
       class="comment-li md-elevation-8 hidden"
     >
       <span class="comment md-headline">{{ comment.comment }}</span>
@@ -14,6 +16,28 @@
 <script>
 export default {
   name: 'Comments',
+  methods: {
+    startDrag: (ev, comment) => {
+      // eslint-disable-next-line
+      ev.dataTransfer.dropEffect = 'move';
+      // eslint-disable-next-line
+      ev.dataTransfer.effectAllowed = 'move';
+      ev.dataTransfer.setData('commentID', comment.id);
+    },
+  },
+  mounted() {
+    const data = {
+      dropzone: document.querySelectorAll('.dropzone'),
+      comments: document.querySelectorAll('.comment-li'),
+    };
+
+    const { dropzone, comments } = data;
+
+    for (let i = 0; i < comments.length; i += 1) {
+      const randomZone = dropzone[Math.floor(Math.random() * dropzone.length)];
+      randomZone.appendChild(comments[i]);
+    }
+  },
   props: {
     comments: {
       type: Array,
@@ -23,12 +47,6 @@ export default {
 </script>
 
 <style>
-.list-of-comments {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
 .hidden {
   display: none !important;
 }
@@ -42,6 +60,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  cursor: pointer;
 }
 
 .comment-li > span:last-child {

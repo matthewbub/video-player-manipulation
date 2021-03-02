@@ -1,28 +1,70 @@
 <template>
   <div class="container">
-    <section class="video-wrapper">
-      <div class="video-sub-wrapper">
-        <video
-          controls
-          muted
-          class="video md-elevation-12"
-        >
-          <source
-            class="video-webm"
-            src="../../assets/big_buck_bunny.webm"
-            type="video/webm"
+    <div class="grid">
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 1-1"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 1-2"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 1-3"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 2-1"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+      <section class="video-wrapper">
+        <div class="video-sub-wrapper">
+          <video
+            controls
+            muted
+            class="video md-elevation-12"
           >
-          <source
-            class="video-mp4"
-            src="../../assets/big_buck_bunny.mp4"
-            type="video/mp4"
-          >
-          Sorry, your browser doesn't support embedded videos. :(
-        </video>
-        <Controls />
-      </div>
-    </section>
-    <Comments :comments="comments.map((i) => i)" />
+            <source
+              class="video-webm"
+              src="../../assets/big_buck_bunny.webm"
+              type="video/webm"
+            >
+            <source
+              class="video-mp4"
+              src="../../assets/big_buck_bunny.mp4"
+              type="video/mp4"
+            >
+            Sorry, your browser doesn't support embedded videos. :(
+          </video>
+          <Controls />
+        </div>
+      </section>
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 2-3"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 3-1"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 3-2"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+      <div @drop='onDrop($event, 1)'
+        class="dropzone 3-3"
+        @dragover.prevent
+        @dragenter.prevent
+      ></div>
+    </div>
+    <Comments v-bind:comments="comments" />
   </div>
 </template>
 
@@ -37,14 +79,24 @@ export default {
     Controls,
     Comments,
   },
+  methods: {
+    onDrop(ev) {
+      const commentID = ev.dataTransfer.getData('commentID');
+      const commentFromProps = this.$props.comments.find(comment => comment.id === commentID);
+      const draggable = document.getElementById(commentFromProps.id);
+      const dropzone = ev.target;
+
+      dropzone.appendChild(draggable);
+    },
+  },
   mounted() {
-    const elements = {
+    const dom = {
       video: document.querySelector('.video'),
       controls: document.querySelector('#controls'),
       comments: this.$props.comments,
     };
 
-    const { video, controls, comments } = elements;
+    const { video, controls, comments } = dom;
 
     let timestamp;
 
@@ -75,6 +127,10 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  width: 100%;
+}
+
 .video {
   height: fit-content;
   width: fit-content;
@@ -85,9 +141,13 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
-.container {
-  width: 90%;
+.grid {
+ display: grid;
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 20% 60% 20%;
+  gap: 0px 0px;
 }
 </style>
