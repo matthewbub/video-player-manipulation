@@ -27,9 +27,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  height: 360px;
-  overflow-y: scroll;
-  padding-right: 12px;
 }
 
 .hidden {
@@ -52,8 +49,8 @@ export default {
 }
 
 .fade-in {
-  -webkit-animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-  animation: fade-in 1.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  -webkit-animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
 /* ----------------------------------------------

@@ -16,9 +16,9 @@ const watchComments = (currentTime, comments) => {
 
     // if video.timestamp is past the comment.timestamp
     if (currentFixedTime > commentFixedTime) {
-      // if (activeComments.length >= 3) {
-      //   activeComments.shift();
-      // }
+      if (activeComments.length >= 3) {
+        activeComments.shift();
+      }
       activeComments.push(comments[i]);
     }
   }
