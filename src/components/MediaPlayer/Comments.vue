@@ -24,6 +24,12 @@ export default {
 </script>
 
 <style>
+.list-of-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .hidden {
   display: none !important;
 }
@@ -36,6 +42,7 @@ export default {
   border-radius: 6px;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
 }
 
 .comment-li > span:last-child {

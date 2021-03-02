@@ -1,27 +1,29 @@
 <template>
-  <div class="grid">
-    <section class="video-wrapper">
-      <video
-        controls
-        muted
-        class="video md-elevation-12"
-      >
-        <source
-          class="video-webm"
-          src="../../assets/big_buck_bunny.webm"
-          type="video/webm"
+  <div class="container">
+    <div class="grid">
+      <section class="video-wrapper">
+        <video
+          controls
+          muted
+          class="video md-elevation-12"
         >
-        <source
-          class="video-mp4"
-          src="../../assets/big_buck_bunny.mp4"
-          type="video/mp4"
-        >
-        Sorry, your browser doesn't support embedded videos. :(
-      </video>
-      <Controls />
-    </section>
-    <div class="comment-wrapper">
-      <Comments :comments="comments.map((i) => i)" />
+          <source
+            class="video-webm"
+            src="../../assets/big_buck_bunny.webm"
+            type="video/webm"
+          >
+          <source
+            class="video-mp4"
+            src="../../assets/big_buck_bunny.mp4"
+            type="video/mp4"
+          >
+          Sorry, your browser doesn't support embedded videos. :(
+        </video>
+        <Controls />
+      </section>
+      <div class="comment-wrapper">
+        <Comments :comments="comments.map((i) => i)" />
+      </div>
     </div>
   </div>
 </template>
@@ -92,5 +94,9 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.container {
+  width: 90%;
 }
 </style>
