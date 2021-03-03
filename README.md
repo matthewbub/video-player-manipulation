@@ -1,49 +1,47 @@
 # Video Player Manipulation Challenge
 
-![Vue](https://img.shields.io/badge/Framework-Vue-blue)
-![Styleguide](https://img.shields.io/badge/Styleguide-Airbnb-blue)
-<!-- ![Firebase Hosting](https://img.shields.io/badge/Hosting-Firebase_Hosting-blue) -->
+<p align="center">
+  <img src="https://img.shields.io/badge/Framework-Vue-%2300AA74" alt="Vue" />
+  <img src="https://img.shields.io/badge/Style%20Guide-Airbnb-%23FB5057" alt="Style Guide" />
+  <img src="https://img.shields.io/badge/Hosting-Firebase-%23FFC932" alt="Firebase Hosting" />
+  <img src="https://img.shields.io/badge/Tested%20with-Jest-%23BF1524" alt="Jest" />
+</p>
 
+## Setup
 
-## Build Setup
+```bash
+# clone repo
+git clone https://github.com/hi-matbub/video-player-manipulation.git
 
-``` bash
-# install dependencies
+# cd to the repo
+cd video-player-manipulation 
+
+# install deps
 npm install
 
-# serve with hot reload at localhost:8080
+# run dev server :tada:
 npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
 
 ### Scaling this app
 As the ammount of comments grow, a sorting algoritihm to would be needed to prevent slowing as setIntervals will get expensive. 
 
-<details open>
-  <summary>Alt Resourses</summary>
-  <ol>
+<details>
+  <summary>Credits</summary>
+  <ul>
     <li>
+      Fake comments came from 
       <a href-"http://commments.com/">
         http://commments.com/
       </a>
     </li>
     <li>
+      Icons came from 
       <a href-"https://www.flaticon.com/">
         https://www.flaticon.com/
       </a>
     </li>
-  </ol>
+  </ul>
 </details>
 
 <p align="center">
