@@ -23,6 +23,14 @@ export default {
       // eslint-disable-next-line
       ev.dataTransfer.effectAllowed = 'move';
       ev.dataTransfer.setData('commentID', comment.id);
+
+      const dropzone = document.querySelectorAll('.dropzone');
+      for (let i = 0; i < dropzone.length; i += 1) {
+        dropzone[i].style.background = 'rgba(123, 123, 123, .2)';
+        setTimeout(() => {
+          dropzone[i].style.background = 'none';
+        }, 2500);
+      }
     },
   },
   mounted() {
@@ -32,10 +40,24 @@ export default {
     };
 
     const { dropzone, comments } = data;
+    const width = (
+      window.innerWidth
+      // accessible
+      || document.documentElement.clientWidth || document.body.clientWidth
+    );
 
-    for (let i = 0; i < comments.length; i += 1) {
-      const randomZone = dropzone[Math.floor(Math.random() * dropzone.length)];
-      randomZone.appendChild(comments[i]);
+    if (width >= 960) {
+      // if big screen make draggable
+      for (let i = 0; i < comments.length; i += 1) {
+        const randomZone = dropzone[Math.floor(Math.random() * dropzone.length)];
+        randomZone.appendChild(comments[i]);
+      }
+    } else {
+      // fill grid spaces. Not draggable
+      for (let i = 0; i < comments.length; i += 1) {
+        comments[i].draggable = '';
+        dropzone[0].appendChild(comments[i]);
+      }
     }
   },
   props: {

@@ -131,9 +131,14 @@ export default {
   width: 100%;
 }
 
+.video-sub-wrapper {
+  width: inherit;
+  height: inherit;
+}
+
 .video {
-  height: fit-content;
-  width: fit-content;
+  height: 100%;
+  width: 100%;
 }
 
 .video-wrapper {
@@ -145,9 +150,80 @@ export default {
 }
 
 .grid {
- display: grid;
+  display: grid;
   grid-template-columns: 20% 60% 20%;
   grid-template-rows: 20% 60% 20%;
   gap: 0px 0px;
+}
+
+.grid-1-1 {
+  border-top-left-radius: 6px;
+}
+
+.grid-1-3 {
+  border-top-right-radius: 6px;
+}
+
+.grid-3-1 {
+  border-bottom-left-radius: 6px;
+}
+
+.grid-3-3 {
+  border-bottom-right-radius: 6px;
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 80%;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1279px){
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 15% 70% 215%;
+    grid-template-rows: 15% 70% 15%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959px){
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 100%;
+    grid-template-rows: max-content;
+  }
+
+  .video-wrapper {
+    grid-row-start: 1;
+    grid-column-start: 1;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 599px){
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .grid {
+    grid-template-columns: 100%;
+    grid-template-rows: max-content;
+  }
+
+  .video-wrapper {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+
+  }
 }
 </style>
