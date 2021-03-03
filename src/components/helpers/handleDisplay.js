@@ -3,7 +3,6 @@ const handleDisplay = (activeComments, action) => {
   for (let i = 0; i < activeComments.length; i += 1) {
     const commentsOnDom = document.querySelectorAll('.comment-li');
 
-
     for (let j = 0; j < commentsOnDom.length; j += 1) {
       if (activeComments[i].id === commentsOnDom[j].id) {
         if (action === 'append') {

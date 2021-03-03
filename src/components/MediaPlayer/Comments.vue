@@ -7,7 +7,7 @@
       @dragstart='startDrag($event, comment)'
       class="comment-li md-elevation-8 hidden"
     >
-      <span class="comment md-headline">{{ comment.comment }}</span>
+      <span class="comment md-title">{{ comment.comment }}</span>
       <span class="authored_by md-caption">{{ comment.authored_by }}</span>
     </div>
   </div>
@@ -49,6 +49,7 @@ export default {
     if (width >= 960) {
       // if big screen make draggable
       for (let i = 0; i < comments.length; i += 1) {
+        comments[i].draggable = 'true';
         const randomZone = dropzone[Math.floor(Math.random() * dropzone.length)];
         randomZone.appendChild(comments[i]);
       }

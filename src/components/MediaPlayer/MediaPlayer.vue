@@ -2,22 +2,22 @@
   <div class="container">
     <div class="grid">
       <div @drop='onDrop($event, 1)'
-        class="dropzone 1-1"
+        class="dropzone grid-1-1"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 1-2"
+        class="dropzone grid-1-2"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 1-3"
+        class="dropzone grid-1-3"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 2-1"
+        class="dropzone grid-2-1"
         @dragover.prevent
         @dragenter.prevent
       ></div>
@@ -44,22 +44,22 @@
         </div>
       </section>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 2-3"
+        class="dropzone grid-2-3"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 3-1"
+        class="dropzone grid-3-1"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 3-2"
+        class="dropzone grid-3-2"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 3-3"
+        class="dropzone grid-3-3"
         @dragover.prevent
         @dragenter.prevent
       ></div>
@@ -204,7 +204,12 @@ export default {
 
   .video-wrapper {
     grid-row-start: 1;
+    grid-row-end: 2;
     grid-column-start: 1;
+  }
+
+  .grid-1-1 {
+    margin-top: 60px;
   }
 }
 
@@ -223,7 +228,10 @@ export default {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 1;
+  }
 
+  .grid-1-1 {
+    margin-top: 60px;
   }
 }
 </style>
