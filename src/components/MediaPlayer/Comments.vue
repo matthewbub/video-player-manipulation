@@ -3,6 +3,7 @@
     <div v-for="comment in comments"
       :key="comment.id"
       :id="comment.id"
+      :ref="comment.id"
       draggable
       @dragstart='startDrag($event, comment)'
       class="comment-li md-elevation-8 hidden"
@@ -61,9 +62,7 @@ export default {
     this.assignComments({
       dropzone: document.querySelectorAll('.dropzone'),
       comments: document.querySelectorAll('.comment-li'),
-      width: window.innerWidth
-      // accessiblility across browsers
-      || document.documentElement.clientWidth || document.body.clientWidth,
+      width: window.innerWidth,
     });
   },
   props: {
