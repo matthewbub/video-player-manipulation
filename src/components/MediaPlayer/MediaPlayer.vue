@@ -2,22 +2,22 @@
   <div class="container">
     <div class="grid">
       <div @drop='onDrop($event, 1)'
-        class="dropzone 1-1"
+        class="dropzone grid-1-1"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 1-2"
+        class="dropzone grid-1-2"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 1-3"
+        class="dropzone grid-1-3"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 2-1"
+        class="dropzone grid-2-1"
         @dragover.prevent
         @dragenter.prevent
       ></div>
@@ -44,22 +44,22 @@
         </div>
       </section>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 2-3"
+        class="dropzone grid-2-3"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 3-1"
+        class="dropzone grid-3-1"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 3-2"
+        class="dropzone grid-3-2"
         @dragover.prevent
         @dragenter.prevent
       ></div>
       <div @drop='onDrop($event, 1)'
-        class="dropzone 3-3"
+        class="dropzone grid-3-3"
         @dragover.prevent
         @dragenter.prevent
       ></div>
@@ -100,10 +100,10 @@ export default {
 
     let timestamp;
 
-    const watchTime = () => {
-      if (controls.className === 'play') {
+    const watchApp = () => {
+      if (isVideoPlaying()) {
         clearInterval(timestamp);
-      } else if (controls.className === 'pause') {
+      } else if (!isVideoPlaying()) {
         timestamp = setInterval(() => watchComments(video.currentTime, comments), 100);
       }
     };
@@ -116,7 +116,7 @@ export default {
     }, 500);
 
     video.onseeking = () => watchComments(video.currentTime, comments);
-    controls.onclick = () => watchTime();
+    controls.onclick = () => watchApp();
   },
   props: {
     comments: {
@@ -132,8 +132,7 @@ export default {
 }
 
 .video {
-  height: fit-content;
-  width: fit-content;
+  width: 100%;
 }
 
 .video-wrapper {
@@ -142,12 +141,94 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .grid {
- display: grid;
+  display: grid;
   grid-template-columns: 20% 60% 20%;
-  grid-template-rows: 20% 60% 20%;
+  grid-template-rows: 20% 50% 20%;
   gap: 0px 0px;
+}
+
+.grid-1-1 {
+  border-top-left-radius: 6px;
+}
+
+.grid-1-3 {
+  border-top-right-radius: 6px;
+}
+
+.grid-3-1 {
+  border-bottom-left-radius: 6px;
+}
+
+.grid-3-3 {
+  border-bottom-right-radius: 6px;
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 80%;
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1279px){
+  .container {
+    width: 90%;
+    padding: 20px;
+    display: flex;
+  }
+
+  .grid {
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 25% 50% 25%;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 959px){
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .grid {
+    grid-template-columns: 100%;
+    grid-template-rows: max-content;
+  }
+
+  .video-wrapper {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+  }
+
+  .grid-1-1 {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 599px){
+  .container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .grid {
+    grid-template-columns: 100%;
+    grid-template-rows: max-content;
+  }
+
+  .video-wrapper {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+  }
+
+  .grid-1-1 {
+    margin-top: 60px;
+  }
 }
 </style>

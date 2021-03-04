@@ -7,7 +7,7 @@
       @dragstart='startDrag($event, comment)'
       class="comment-li md-elevation-8 hidden"
     >
-      <span class="comment md-headline">{{ comment.comment }}</span>
+      <span class="comment md-title">{{ comment.comment }}</span>
       <span class="authored_by md-caption">{{ comment.authored_by }}</span>
     </div>
   </div>
@@ -23,20 +23,48 @@ export default {
       // eslint-disable-next-line
       ev.dataTransfer.effectAllowed = 'move';
       ev.dataTransfer.setData('commentID', comment.id);
+
+      // elements of grid
+      const dropzone = document.querySelectorAll('.dropzone');
+
+      for (let i = 0; i < dropzone.length; i += 1) {
+        // set & reset hover effect
+        dropzone[i].style.background = 'rgba(123, 123, 123, .2)';
+        // eslint-disable-next-line
+        setTimeout(() => dropzone[i].style.background = 'none', 2500);
+      }
+    },
+    assignComments: ({
+      dropzone,
+      comments,
+      width,
+    }) => {
+      if (width >= 960) {
+        for (let i = 0; i < comments.length; i += 1) {
+          // if big screen make draggable
+          // eslint-disable-next-line
+          comments[i].draggable = 'true';
+          const randomZone = dropzone[Math.floor(Math.random() * dropzone.length)];
+          randomZone.appendChild(comments[i]);
+        }
+      } else {
+        // fill grid spaces. Not draggable
+        for (let i = 0; i < comments.length; i += 1) {
+          // eslint-disable-next-line
+          comments[i].draggable = '';
+          dropzone[0].appendChild(comments[i]);
+        }
+      }
     },
   },
   mounted() {
-    const data = {
+    this.assignComments({
       dropzone: document.querySelectorAll('.dropzone'),
       comments: document.querySelectorAll('.comment-li'),
-    };
-
-    const { dropzone, comments } = data;
-
-    for (let i = 0; i < comments.length; i += 1) {
-      const randomZone = dropzone[Math.floor(Math.random() * dropzone.length)];
-      randomZone.appendChild(comments[i]);
-    }
+      width: window.innerWidth
+      // accessiblility across browsers
+      || document.documentElement.clientWidth || document.body.clientWidth,
+    });
   },
   props: {
     comments: {
@@ -53,7 +81,8 @@ export default {
 
 .comment-li {
   background: rgba(6, 214, 160, .9);
-  width: fit-content;
+  width: max-content;
+  max-width: 300px;
   margin: 2px;
   padding: 12px 24px;
   border-radius: 6px;
