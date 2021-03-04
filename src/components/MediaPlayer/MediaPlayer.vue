@@ -100,10 +100,10 @@ export default {
 
     let timestamp;
 
-    const watchTime = () => {
-      if (controls.className === 'play') {
+    const watchApp = () => {
+      if (isVideoPlaying()) {
         clearInterval(timestamp);
-      } else if (controls.className === 'pause') {
+      } else if (!isVideoPlaying()) {
         timestamp = setInterval(() => watchComments(video.currentTime, comments), 100);
       }
     };
@@ -116,7 +116,7 @@ export default {
     }, 500);
 
     video.onseeking = () => watchComments(video.currentTime, comments);
-    controls.onclick = () => watchTime();
+    controls.onclick = () => watchApp();
   },
   props: {
     comments: {
@@ -131,13 +131,7 @@ export default {
   width: 100%;
 }
 
-.video-sub-wrapper {
-  width: inherit;
-  height: inherit;
-}
-
 .video {
-  height: 100%;
   width: 100%;
 }
 
@@ -147,12 +141,13 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
 }
 
 .grid {
   display: grid;
   grid-template-columns: 20% 60% 20%;
-  grid-template-rows: 20% 60% 20%;
+  grid-template-rows: 20% 50% 20%;
   gap: 0px 0px;
 }
 
@@ -183,11 +178,13 @@ export default {
   .container {
     width: 90%;
     padding: 20px;
+    display: flex;
   }
 
   .grid {
-    grid-template-columns: 15% 70% 215%;
-    grid-template-rows: 15% 70% 15%;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 25% 50% 25%;
+    width: 100%;
   }
 }
 
