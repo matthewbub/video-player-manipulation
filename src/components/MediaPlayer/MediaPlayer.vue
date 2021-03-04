@@ -136,9 +136,9 @@ export default {
     comments: {
       type: Array,
     },
-    // videoIsPlaying: {
-    //   type: Boolean
-    // }
+    videoIsPlaying: {
+      type: Boolean,
+    },
   },
 };
 </script>

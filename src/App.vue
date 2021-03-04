@@ -38,7 +38,7 @@ export default {
   },
   mounted() {
     this.onResize();
-    this.isVideoPlaying();
+    // this.isVideoPlaying();
 
     this.$nextTick(() => {
       const video = this.$refs.mediaPlayer.$refs.video;
@@ -63,7 +63,7 @@ export default {
     isVideoPlaying() {
       const video = this.$refs.mediaPlayer.$refs.video;
 
-      this.videoIsPlaying = !!(
+      this.videoIsPlaying = !(
         video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2
       );
     },
