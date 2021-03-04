@@ -24,13 +24,15 @@ export default {
   methods: {
     toggleControl() {
       const video = document.querySelector('.video');
-      const control = document.querySelector('#controls').children[0].children[0];
-      if (control.innerText === 'PLAY') {
+      const control = this.$refs.playButton.children[0];
+      if (control.children[0].innerText === 'PLAY') {
         video.play();
         this.msg = 'PAUSE';
+        control.className = 'md-button pause md-theme-default';
       } else {
         video.pause();
         this.msg = 'PLAY';
+        control.className = 'md-button play md-theme-default';
       }
     },
   },

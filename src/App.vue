@@ -38,8 +38,6 @@ export default {
   },
   mounted() {
     this.onResize();
-    // this.isVideoPlaying();
-
     this.$nextTick(() => {
       const video = this.$refs.mediaPlayer.$refs.video;
       video.addEventListener('click', this.isVideoPlaying);
@@ -62,6 +60,9 @@ export default {
     },
     isVideoPlaying() {
       const video = this.$refs.mediaPlayer.$refs.video;
+      // const control = this.$refs.mediaPlayer.$refs.controls.$refs.playButton.className;
+
+      // console.log(control)
 
       this.videoIsPlaying = !(
         video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2
