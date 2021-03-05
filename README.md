@@ -7,7 +7,15 @@
   <img src="https://img.shields.io/badge/Tested%20with-Jest-%23BF1524" alt="Jest" />
 </p>
 
+<div align="center">
+  <a href="hi-matbub.github.io" target="_blank">
+    <img src="./static/demo_app.gif" alt="demo"/>
+  </a>
+</div>
+
 ## Setup
+
+Local setup is simple and only requires `npm`.
 
 ```bash
 # clone repo
@@ -23,26 +31,9 @@ npm install
 npm run dev
 ```
 
-### Scaling this app
-As the ammount of comments grow, a sorting algoritihm to would be needed to prevent slowing as setIntervals will get expensive. 
+## Workflow 
 
-<details>
-  <summary>Credits</summary>
-  <ul>
-    <li>
-      Fake comments came from 
-      <a href-"http://commments.com/">
-        http://commments.com/
-      </a>
-    </li>
-    <li>
-      Icons came from 
-      <a href-"https://www.flaticon.com/">
-        https://www.flaticon.com/
-      </a>
-    </li>
-  </ul>
-</details>
+This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), [conventional-commit-helper](https://github.com/hi-matbub/conventional-commit-helper) and is enforced with a [pre-commit hook](./.husky/pre-commit) to verify no lint errors and all tests are passing before each commit. As a final precautionary measure we have a GitHub workflow script to catch any lint errors for each push.
 
 <p align="center">
   <a href="hi-matbub.github.io" target="_blank">
