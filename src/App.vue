@@ -9,6 +9,7 @@
       />
     </main>
     <footer>
+      Video courtesy of Big Buck Bunny <br/>
       {{ year.year }}
     </footer>
   </div>
@@ -58,6 +59,7 @@ export default {
       this.$refs.mediaPlayer
         .$refs.controls
         .$refs.playButton
+        .children[0]
     );
     playButton.removeEventListener('click', this.isVideoPlaying);
     video.removeEventListener('click', this.isVideoPlaying);
@@ -107,6 +109,8 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 40px 0;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
 }
 </style>
