@@ -32,6 +32,7 @@
             muted
             ref="video"
             class="video md-elevation-12"
+            v-on:click="watchApp"
           >
             <source
               class="video-webm"
@@ -46,7 +47,6 @@
             Sorry, your browser doesn't support embedded videos. :(
           </video>
           <Controls
-            :isVideoPlaying="isVideoPlaying"
             ref="controls"
           />
         </div>
@@ -75,7 +75,6 @@
     </div>
     <Comments
       ref="comments"
-      :isVideoPlaying="isVideoPlaying"
       v-bind:comments="comments"
     />
   </div>
@@ -99,38 +98,24 @@ export default {
       const draggable = document.getElementById(commentFromProps.id);
       ev.target.appendChild(draggable);
     },
-    isVideoPlaying(video) {
-      return !!(video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2);
+    watchApp() {
+      const video = this.$refs.video;
+      const comments = this.$props.comments;
+      let timestamp;
+
+      clearInterval(timestamp);
+
+      timestamp = setInterval(() => this.watchComments(video.currentTime, comments), 100);
     },
+    watchComments,
   },
   mounted() {
-    const dom = {
-      video: this.$refs.video,
-      controls: this.$refs.controls.$refs.playButton.children[0],
-      comments: this.$props.comments,
-    };
-    // console.log(this.videoIsPlaying())
+    const video = this.$refs.video;
+    const controls = this.$refs.controls.$refs.playButton.children[0];
+    const comments = this.$props.comments;
 
-    const {
-      video,
-      controls,
-      comments,
-    } = dom;
-
-    let timestamp;
-    const isVideoPlaying = () => !!(
-      video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2
-    );
-    const watchApp = () => {
-      if (isVideoPlaying()) {
-        clearInterval(timestamp);
-      } else if (!isVideoPlaying()) {
-        timestamp = setInterval(() => watchComments(video.currentTime, comments), 100);
-      }
-    };
-
-    video.onseeking = () => watchComments(video.currentTime, comments);
-    controls.onclick = () => watchApp();
+    video.onseeking = () => this.watchComments(video.currentTime, comments);
+    controls.onclick = () => this.watchApp(video, comments);
   },
   props: {
     comments: {

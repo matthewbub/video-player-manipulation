@@ -36,10 +36,6 @@ export default {
       }
     },
   },
-  mounted() {
-    document.querySelector('.video').onclick = () => this.toggleControl;
-    document.onkeypress = () => this.toggleControl;
-  },
 };
 </script>
 <style scoped>

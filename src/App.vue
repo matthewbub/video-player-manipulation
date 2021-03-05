@@ -40,6 +40,13 @@ export default {
     this.onResize();
     this.$nextTick(() => {
       const video = this.$refs.mediaPlayer.$refs.video;
+      const playButton = (
+        this.$refs.mediaPlayer
+          .$refs.controls
+          .$refs.playButton
+      );
+
+      playButton.addEventListener('click', this.isVideoPlaying);
       video.addEventListener('click', this.isVideoPlaying);
       window.addEventListener('keypress', this.isVideoPlaying);
       window.addEventListener('resize', this.onResize);
@@ -47,6 +54,12 @@ export default {
   },
   beforeDestroy() {
     const video = this.$refs.mediaPlayer.$refs.video;
+    const playButton = (
+      this.$refs.mediaPlayer
+        .$refs.controls
+        .$refs.playButton
+    );
+    playButton.removeEventListener('click', this.isVideoPlaying);
     video.removeEventListener('click', this.isVideoPlaying);
     window.removeEventListener('keypress', this.isVideoPlaying);
     window.removeEventListener('resize', this.onResize);
@@ -60,10 +73,6 @@ export default {
     },
     isVideoPlaying() {
       const video = this.$refs.mediaPlayer.$refs.video;
-      // const control = this.$refs.mediaPlayer.$refs.controls.$refs.playButton.className;
-
-      // console.log(control)
-
       this.videoIsPlaying = !(
         video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2
       );
