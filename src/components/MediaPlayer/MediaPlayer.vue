@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+  <div
+    ref="container"
+    class="container"
+  >
     <div
       ref="grid"
       class="grid"

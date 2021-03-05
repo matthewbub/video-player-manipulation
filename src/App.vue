@@ -71,6 +71,8 @@ export default {
       this.windowWidth = window.innerWidth;
       if (window.innerWidth >= 960) {
         this.$refs.mediaPlayer.$refs.grid.style.height = `${window.innerHeight}px`;
+      } else {
+        this.$refs.mediaPlayer.$refs.container.style.minHeight = `${window.innerHeight}px`;
       }
     },
     isVideoPlaying() {
