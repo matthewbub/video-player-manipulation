@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <div class="grid">
+    <div
+      ref="grid"
+      class="grid"
+    >
       <div @drop='onDrop($event, 1)'
         class="dropzone grid-1-1"
         @dragover.prevent
@@ -21,12 +24,15 @@
         @dragover.prevent
         @dragenter.prevent
       ></div>
+
       <section class="video-wrapper">
         <div class="video-sub-wrapper">
           <video
             controls
             muted
+            ref="video"
             class="video md-elevation-12"
+            v-on:click="watchApp"
           >
             <source
               class="video-webm"
@@ -40,9 +46,12 @@
             >
             Sorry, your browser doesn't support embedded videos. :(
           </video>
-          <Controls />
+          <Controls
+            ref="controls"
+          />
         </div>
       </section>
+
       <div @drop='onDrop($event, 1)'
         class="dropzone grid-2-3"
         @dragover.prevent
@@ -64,14 +73,17 @@
         @dragenter.prevent
       ></div>
     </div>
-    <Comments v-bind:comments="comments" />
+    <Comments
+      ref="comments"
+      v-bind:comments="comments"
+    />
   </div>
 </template>
 
 <script>
 import Controls from './Controls';
 import Comments from './Comments';
-import { watchComments, isVideoPlaying } from '../helpers/';
+import { watchComments } from '../helpers';
 
 export default {
   name: 'MediaPlayer',
@@ -84,43 +96,33 @@ export default {
       const commentID = ev.dataTransfer.getData('commentID');
       const commentFromProps = this.$props.comments.find(comment => comment.id === commentID);
       const draggable = document.getElementById(commentFromProps.id);
-      const dropzone = ev.target;
-
-      dropzone.appendChild(draggable);
+      ev.target.appendChild(draggable);
     },
+    watchApp() {
+      const video = this.$refs.video;
+      const comments = this.$props.comments;
+      let timestamp;
+
+      clearInterval(timestamp);
+
+      timestamp = setInterval(() => this.watchComments(video.currentTime, comments), 100);
+    },
+    watchComments,
   },
   mounted() {
-    const dom = {
-      video: document.querySelector('.video'),
-      controls: document.querySelector('#controls'),
-      comments: this.$props.comments,
-    };
+    const video = this.$refs.video;
+    const controls = this.$refs.controls.$refs.playButton.children[0];
+    const comments = this.$props.comments;
 
-    const { video, controls, comments } = dom;
-
-    let timestamp;
-
-    const watchApp = () => {
-      if (isVideoPlaying()) {
-        clearInterval(timestamp);
-      } else if (!isVideoPlaying()) {
-        timestamp = setInterval(() => watchComments(video.currentTime, comments), 100);
-      }
-    };
-
-    // gives accessibility for default video controls and space bar
-    setInterval(() => {
-      if (isVideoPlaying(video)) {
-        watchComments(video.currentTime, comments);
-      }
-    }, 500);
-
-    video.onseeking = () => watchComments(video.currentTime, comments);
-    controls.onclick = () => watchApp();
+    video.onseeking = () => this.watchComments(video.currentTime, comments);
+    controls.onclick = () => this.watchApp(video, comments);
   },
   props: {
     comments: {
       type: Array,
+    },
+    videoIsPlaying: {
+      type: Boolean,
     },
   },
 };

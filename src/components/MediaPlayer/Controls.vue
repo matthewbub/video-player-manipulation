@@ -1,10 +1,12 @@
 <template>
-  <div class="controls">
+  <div class="controls"
+      ref="playButton"
+    >
     <md-button
       id="controls"
       type="button"
       @click.native="toggleControl"
-      v-bind:class="[ play ? 'play' : 'pause' ]"
+      class="play"
     >
       {{ msg }}
     </md-button>
@@ -16,22 +18,21 @@ export default {
   name: 'Control',
   data() {
     return {
-      msg: 'Play',
-      play: true,
+      msg: 'PLAY',
     };
   },
   methods: {
-    toggleControl(ev) {
+    toggleControl() {
       const video = document.querySelector('.video');
-
-      if (ev.target.innerText === 'PLAY') {
+      const control = this.$refs.playButton.children[0];
+      if (control.children[0].innerText === 'PLAY') {
         video.play();
-        this.msg = 'Pause';
-        this.play = false;
+        this.msg = 'PAUSE';
+        control.className = 'md-button pause md-theme-default';
       } else {
         video.pause();
-        this.msg = 'Play';
-        this.play = true;
+        this.msg = 'PLAY';
+        control.className = 'md-button play md-theme-default';
       }
     },
   },

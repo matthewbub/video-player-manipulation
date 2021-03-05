@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <main>
-      <MediaPlayer :comments="comments" />
+      <MediaPlayer
+        ref="mediaPlayer"
+        v-bind:videoIsPlaying="videoIsPlaying"
+        :comments="comments"
+        :windowWidth="windowWidth"
+      />
     </main>
     <footer>
       {{ year.year }}
@@ -21,7 +26,6 @@ import HelloWorld from './components/HelloWorld';
 import MediaPlayer from './components/MediaPlayer/';
 import {
   dummyComments,
-  checkWindowOnResize,
 } from './components/helpers/';
 
 Vue.use(VueMaterial);
@@ -32,11 +36,55 @@ export default {
     HelloWorld,
     MediaPlayer,
   },
-  created: () => window.addEventListener('resize', this.checkWindowOnResize),
-  destroyed: () => window.removeEventListener('resize', this.checkWindowOnResize),
-  mounted: () => checkWindowOnResize(),
-  methods: { checkWindowOnResize },
-  data: () => ({ comments: dummyComments }),
+  mounted() {
+    this.onResize();
+    this.$nextTick(() => {
+      const video = this.$refs.mediaPlayer.$refs.video;
+      const playButton = (
+        this.$refs.mediaPlayer
+          .$refs.controls
+          .$refs.playButton
+      );
+
+      playButton.addEventListener('click', this.isVideoPlaying);
+      video.addEventListener('click', this.isVideoPlaying);
+      window.addEventListener('keypress', this.isVideoPlaying);
+      window.addEventListener('resize', this.onResize);
+    });
+  },
+  beforeDestroy() {
+    const video = this.$refs.mediaPlayer.$refs.video;
+    const playButton = (
+      this.$refs.mediaPlayer
+        .$refs.controls
+        .$refs.playButton
+    );
+    playButton.removeEventListener('click', this.isVideoPlaying);
+    video.removeEventListener('click', this.isVideoPlaying);
+    window.removeEventListener('keypress', this.isVideoPlaying);
+    window.removeEventListener('resize', this.onResize);
+  },
+  methods: {
+    onResize() {
+      this.windowWidth = window.innerWidth;
+      if (window.innerWidth >= 960) {
+        this.$refs.mediaPlayer.$refs.grid.style.height = `${window.innerHeight}px`;
+      }
+    },
+    isVideoPlaying() {
+      const video = this.$refs.mediaPlayer.$refs.video;
+      this.videoIsPlaying = !(
+        video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2
+      );
+    },
+  },
+  data() {
+    return {
+      comments: dummyComments,
+      windowWidth: window.innerWidth,
+      videoIsPlaying: false,
+    };
+  },
   computed: {
     year: () => {
       const date = new Date();
