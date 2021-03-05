@@ -96,7 +96,9 @@ export default {
       const commentID = ev.dataTransfer.getData('commentID');
       const commentFromProps = this.$props.comments.find(comment => comment.id === commentID);
       const draggable = document.getElementById(commentFromProps.id);
-      ev.target.appendChild(draggable);
+      if (ev.target.className !== 'comment md-title') {
+        ev.target.appendChild(draggable);
+      }
     },
     watchApp() {
       const video = this.$refs.video;
