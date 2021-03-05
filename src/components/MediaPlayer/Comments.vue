@@ -19,9 +19,7 @@ export default {
   name: 'Comments',
   methods: {
     startDrag: (ev, comment) => {
-      // eslint-disable-next-line
       ev.dataTransfer.dropEffect = 'move';
-      // eslint-disable-next-line
       ev.dataTransfer.effectAllowed = 'move';
       ev.dataTransfer.setData('commentID', comment.id);
 
@@ -31,8 +29,7 @@ export default {
       for (let i = 0; i < dropzone.length; i += 1) {
         // set & reset hover effect
         dropzone[i].style.background = 'rgba(123, 123, 123, .2)';
-        // eslint-disable-next-line
-        setTimeout(() => dropzone[i].style.background = 'none', 2500);
+        setTimeout(() => { dropzone[i].style.background = 'none'; }, 2500);
       }
     },
     assignComments: ({
@@ -43,7 +40,6 @@ export default {
       if (width >= 960) {
         for (let i = 0; i < comments.length; i += 1) {
           // if big screen make draggable
-          // eslint-disable-next-line
           comments[i].draggable = 'true';
           const randomZone = dropzone[Math.floor(Math.random() * dropzone.length)];
           randomZone.appendChild(comments[i]);
@@ -51,7 +47,6 @@ export default {
       } else {
         // fill grid spaces. Not draggable
         for (let i = 0; i < comments.length; i += 1) {
-          // eslint-disable-next-line
           comments[i].draggable = '';
           dropzone[0].appendChild(comments[i]);
         }
