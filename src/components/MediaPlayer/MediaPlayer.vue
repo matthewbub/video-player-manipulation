@@ -77,7 +77,15 @@
       ></div>
     </div>
     <Comments
+      v-if="this.$props.windowWidth >= 960"
       ref="comments"
+      :largescreen="true"
+      v-bind:comments="comments"
+    />
+    <Comments
+      v-else
+      ref="comments"
+      :largescreen="false"
       v-bind:comments="comments"
     />
   </div>
@@ -128,6 +136,9 @@ export default {
     },
     videoIsPlaying: {
       type: Boolean,
+    },
+    windowWidth: {
+      type: Number,
     },
   },
 };

@@ -53,6 +53,16 @@ export default {
       }
     },
   },
+  watch: {
+    largescreen() {
+      // re-sort comments based on media queries
+      this.assignComments({
+        dropzone: document.querySelectorAll('.dropzone'),
+        comments: document.querySelectorAll('.comment-li'),
+        width: window.innerWidth,
+      });
+    },
+  },
   mounted() {
     this.assignComments({
       dropzone: document.querySelectorAll('.dropzone'),
@@ -63,6 +73,9 @@ export default {
   props: {
     comments: {
       type: Array,
+    },
+    largescreen: {
+      type: Boolean,
     },
   },
 };
