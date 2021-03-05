@@ -7,11 +7,14 @@
   <img src="https://img.shields.io/badge/Tested%20with-Jest-%23BF1524" alt="Jest" />
 </p>
 
-<div align="center">
+<p>Interactive comments for the HTML5 Video API. Comments are tied to timestamp and sortable using the HTML5 Drag and Drop API.</p>
+</br>
+
+<p align="center">
   <a href="hi-matbub.github.io" target="_blank">
     <img src="./static/demo_app.gif" alt="demo"/>
   </a>
-</div>
+</p>
 
 ## Setup
 
