@@ -21,6 +21,15 @@ export default {
       msg: 'PLAY',
     };
   },
+  watch: {
+    videoIsPlaying(res) {
+      if (res === true) {
+        this.msg = 'PAUSE';
+      } else {
+        this.msg = 'PLAY';
+      }
+    },
+  },
   methods: {
     toggleControl() {
       const video = document.querySelector('.video');
@@ -36,13 +45,21 @@ export default {
       }
     },
   },
+  props: {
+    videoIsPlaying: {
+      type: Boolean,
+    },
+    currentTimestamp: {
+      type: Number,
+    },
+  },
 };
 </script>
 <style scoped>
 .play, .pause {
   background-repeat: no-repeat;
   background-position: left;
-  background-size: 26px;
+  background-size: 20px;
   background-position-x: .4em;
   padding-left: 30px;
   width: fit-content;
