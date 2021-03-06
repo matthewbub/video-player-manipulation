@@ -24,9 +24,14 @@ export default {
   watch: {
     videoIsPlaying(res) {
       if (res === true) {
+        const control = this.$refs.playButton.children[0];
         this.msg = 'PAUSE';
+        control.className = 'md-button pause md-theme-default';
       } else {
+        const control = this.$refs.playButton.children[0];
+
         this.msg = 'PLAY';
+        control.className = 'md-button play md-theme-default';
       }
     },
   },
