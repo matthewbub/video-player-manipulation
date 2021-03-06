@@ -41,9 +41,7 @@ export default {
     this.$nextTick(() => {
       const mediaPlayer = this.$refs.mediaPlayer;
       const video = mediaPlayer.$refs.video;
-      const playButton = mediaPlayer.$refs.controls.$refs.playButton;
 
-      playButton.addEventListener('click', this.isVideoPlaying);
       video.addEventListener('timeupdate', this.getCurrentTimestamp);
       video.addEventListener('ended', this.resetTimestamp);
       window.addEventListener('resize', this.onResize);
@@ -52,9 +50,7 @@ export default {
   beforeDestroy() {
     const mediaPlayer = this.$refs.mediaPlayer;
     const video = mediaPlayer.$refs.video;
-    const playButton = mediaPlayer.$refs.controls.$refs.playButton;
 
-    playButton.removeEventListener('click', this.isVideoPlaying);
     video.removeEventListener('timeupdate', this.getCurrentTimestamp);
     video.removeEventListener('ended', this.resetTimestamp);
     window.removeEventListener('resize', this.onResize);
@@ -70,12 +66,18 @@ export default {
         this.$refs.mediaPlayer.$refs.container.style.minHeight = `${window.innerHeight}px`;
       }
     },
-    isVideoPlaying() {
-      const video = this.$refs.mediaPlayer.$refs.video;
-      this.videoIsPlaying = !video.paused;
-    },
     getCurrentTimestamp() {
       const video = this.$refs.mediaPlayer.$refs.video;
+      const thisMoment = video.currentTime;
+
+      setTimeout(() => {
+        if (video.currentTime !== thisMoment) {
+          this.videoIsPlaying = true;
+        } else {
+          this.videoIsPlaying = false;
+        }
+      }, 100);
+
       this.currentTimestamp = video.currentTime;
     },
     resetTimestamp() {
