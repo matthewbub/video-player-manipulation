@@ -21,6 +21,15 @@ export default {
       msg: 'PLAY',
     };
   },
+  watch: {
+    videoIsPlaying(res) {
+      if (res === true) {
+        this.msg = 'PAUSE';
+      } else {
+        this.msg = 'PLAY';
+      }
+    },
+  },
   methods: {
     toggleControl() {
       const video = document.querySelector('.video');
@@ -34,6 +43,14 @@ export default {
         this.msg = 'PLAY';
         control.className = 'md-button play md-theme-default';
       }
+    },
+  },
+  props: {
+    videoIsPlaying: {
+      type: Boolean,
+    },
+    currentTimestamp: {
+      type: Number,
     },
   },
 };

@@ -26,9 +26,7 @@ import 'vue-material/dist/theme/default-dark.css';
 import HelloWorld from './components/HelloWorld';
 
 import MediaPlayer from './components/MediaPlayer/';
-import {
-  dummyComments,
-} from './components/helpers/';
+import { dummyComments } from './components/helpers/';
 
 Vue.use(VueMaterial);
 

@@ -50,6 +50,8 @@
           </video>
           <Controls
             ref="controls"
+            :videoIsPlaying="this.$props.videoIsPlaying"
+            :currentTimestamp="this.$props.currentTimestamp"
           />
         </div>
       </section>
