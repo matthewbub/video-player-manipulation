@@ -106,14 +106,7 @@ export default {
     Comments,
   },
   methods: {
-    onDrop(ev) {
-      const commentID = ev.dataTransfer.getData('commentID');
-      const commentFromProps = this.$props.comments.find(comment => comment.id === commentID);
-      const draggable = document.getElementById(commentFromProps.id);
-      if (ev.target.className !== 'comment md-title') {
-        ev.target.appendChild(draggable);
-      }
-    },
+    onDrop(ev) { this.$refs.comments.onDrop(ev); },
     watchComments,
   },
   watch: {
