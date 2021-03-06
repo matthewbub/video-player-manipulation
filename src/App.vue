@@ -5,6 +5,7 @@
         ref="mediaPlayer"
         v-bind:videoIsPlaying="videoIsPlaying"
         :comments="comments"
+        :currentTimestamp="this.currentTimestamp"
         :windowWidth="windowWidth"
       />
     </main>
@@ -40,30 +41,24 @@ export default {
   mounted() {
     this.onResize();
     this.$nextTick(() => {
-      const video = this.$refs.mediaPlayer.$refs.video;
-      const playButton = (
-        this.$refs.mediaPlayer
-          .$refs.controls
-          .$refs.playButton
-      );
+      const mediaPlayer = this.$refs.mediaPlayer;
+      const video = mediaPlayer.$refs.video;
+      const playButton = mediaPlayer.$refs.controls.$refs.playButton;
 
       playButton.addEventListener('click', this.isVideoPlaying);
-      video.addEventListener('click', this.isVideoPlaying);
-      window.addEventListener('keypress', this.isVideoPlaying);
+      video.addEventListener('timeupdate', this.getCurrentTimestamp);
+      video.addEventListener('ended', this.resetTimestamp);
       window.addEventListener('resize', this.onResize);
     });
   },
   beforeDestroy() {
-    const video = this.$refs.mediaPlayer.$refs.video;
-    const playButton = (
-      this.$refs.mediaPlayer
-        .$refs.controls
-        .$refs.playButton
-        .children[0]
-    );
+    const mediaPlayer = this.$refs.mediaPlayer;
+    const video = mediaPlayer.$refs.video;
+    const playButton = mediaPlayer.$refs.controls.$refs.playButton;
+
     playButton.removeEventListener('click', this.isVideoPlaying);
-    video.removeEventListener('click', this.isVideoPlaying);
-    window.removeEventListener('keypress', this.isVideoPlaying);
+    video.removeEventListener('timeupdate', this.getCurrentTimestamp);
+    video.removeEventListener('ended', this.resetTimestamp);
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
@@ -79,9 +74,15 @@ export default {
     },
     isVideoPlaying() {
       const video = this.$refs.mediaPlayer.$refs.video;
-      this.videoIsPlaying = !(
-        video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2
-      );
+      this.videoIsPlaying = !video.paused;
+    },
+    getCurrentTimestamp() {
+      const video = this.$refs.mediaPlayer.$refs.video;
+      this.currentTimestamp = video.currentTime;
+    },
+    resetTimestamp() {
+      const video = this.$refs.mediaPlayer.$refs.video;
+      video.currentTime = 0;
     },
   },
   data() {
@@ -89,6 +90,7 @@ export default {
       comments: dummyComments,
       windowWidth: window.innerWidth,
       videoIsPlaying: false,
+      currentTimestamp: 0,
     };
   },
   computed: {
