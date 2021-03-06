@@ -1,4 +1,4 @@
-# Video Player Manipulation Challenge
+# Video Player Manipulation
 
 <p align="center">
   <img src="https://img.shields.io/badge/Framework-Vue-%2300AA74" alt="Vue" />
@@ -21,6 +21,23 @@
 - [Getting up to speed](#getting-up-to-speed)
 - [Workflow](#workflow)
 - [Issues](https://github.com/hi-matbub/video-player-manipulation/issues)
+
+<details>
+
+<summary>
+  A message from the dev :wave:
+</summary>
+
+This challenge was an absoloute blast and quickly turned into a passion project. 
+
+Overall, Vue has been very friendly and fun to work with and suites the use case for this application well. I opted to use the HTML5 Video player and API by default for accessiblity. I also decided to throw in HTML5s Drag and Drop API to add a unique effect, which certainly has [room to scale](https://github.com/hi-matbub/video-player-manipulation/issues/45).
+
+I hope you enjoy, if you have any questions feel free to reach out! 
+
+Best,
+<a href="mailto:6matbub@gmail.com">Matthew Bub</a>
+
+</details>
 
 ## Setup
 
@@ -63,7 +80,7 @@ Video Player Manipulation
 └── src
     ├── App.vue
     ├── main.js
-    ├── helpers
+    ├── helpers/
     └── MediaPlayer 
         ├── MediaPlayer.vue
         ├── Comments.vue
@@ -123,7 +140,5 @@ Contains external video controls, easy to sync with video playback using `$props
 This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), [conventional-commit-helper](https://github.com/hi-matbub/conventional-commit-helper) and is enforced with a [pre-commit hook](./.husky/pre-commit) to verify no lint errors and all tests are passing before each commit. As a final precautionary measure we have a GitHub workflow script to catch any lint errors for each push.
 
 <p align="center">
-  <a href="hi-matbub.github.io" target="_blank">
-    Matthew Bub
-  </a>
+  <a href="mailto:6matbub@gmail.com">Matthew Bub</a>
 </p>
