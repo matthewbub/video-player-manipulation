@@ -35,7 +35,6 @@
             muted
             ref="video"
             class="video md-elevation-12"
-            v-on:click="watchApp"
           >
             <source
               class="video-webm"
@@ -80,12 +79,14 @@
       v-if="this.$props.windowWidth >= 960"
       ref="comments"
       :largescreen="true"
+      :videoIsPlaying="this.$props.videoIsPlaying"
       v-bind:comments="comments"
     />
     <Comments
       v-else
       ref="comments"
       :largescreen="false"
+      :videoIsPlaying="this.$props.videoIsPlaying"
       v-bind:comments="comments"
     />
   </div>
@@ -111,24 +112,22 @@ export default {
         ev.target.appendChild(draggable);
       }
     },
-    watchApp() {
-      const video = this.$refs.video;
-      const comments = this.$props.comments;
-      let timestamp;
-
-      clearInterval(timestamp);
-
-      timestamp = setInterval(() => this.watchComments(video.currentTime, comments), 100);
-    },
     watchComments,
+  },
+  watch: {
+    currentTimestamp() {
+      const self = this;
+      const video = self.$refs.video;
+      const comments = self.$props.comments;
+
+      this.watchComments(video.currentTime, comments);
+    },
   },
   mounted() {
     const video = this.$refs.video;
-    const controls = this.$refs.controls.$refs.playButton.children[0];
     const comments = this.$props.comments;
 
     video.onseeking = () => this.watchComments(video.currentTime, comments);
-    controls.onclick = () => this.watchApp(video, comments);
   },
   props: {
     comments: {
@@ -138,6 +137,9 @@ export default {
       type: Boolean,
     },
     windowWidth: {
+      type: Number,
+    },
+    currentTimestamp: {
       type: Number,
     },
   },
