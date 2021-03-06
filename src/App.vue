@@ -47,6 +47,7 @@ export default {
 
       playButton.addEventListener('click', this.isVideoPlaying);
       video.addEventListener('timeupdate', this.getCurrentTimestamp);
+      video.addEventListener('ended', this.resetTimestamp);
       window.addEventListener('resize', this.onResize);
     });
   },
@@ -57,6 +58,7 @@ export default {
 
     playButton.removeEventListener('click', this.isVideoPlaying);
     video.removeEventListener('timeupdate', this.getCurrentTimestamp);
+    video.removeEventListener('ended', this.resetTimestamp);
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
@@ -77,6 +79,10 @@ export default {
     getCurrentTimestamp() {
       const video = this.$refs.mediaPlayer.$refs.video;
       this.currentTimestamp = video.currentTime;
+    },
+    resetTimestamp() {
+      const video = this.$refs.mediaPlayer.$refs.video;
+      video.currentTime = 0;
     },
   },
   data() {
