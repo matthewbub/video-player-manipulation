@@ -16,6 +16,12 @@
   </a>
 </p>
 
+## Table of Contents
+- [Setup](#setup)
+- [Getting up to speed](#getting-up-to-speed)
+- [Workflow](#workflow)
+- [Issues](https://github.com/hi-matbub/video-player-manipulation/issues)
+
 ## Setup
 
 Local setup is simple and only requires `npm`.
