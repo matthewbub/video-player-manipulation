@@ -111,6 +111,13 @@ export default {
   align-self: flex-end;
 }
 
+@media screen and (max-width: 960px) {
+  .comment-li {
+    width: auto;
+    max-width: inherit;
+  }
+}
+
 .fade-in {
   -webkit-animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   animation: fade-in 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
