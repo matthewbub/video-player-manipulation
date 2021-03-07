@@ -38,12 +38,15 @@ export default {
   },
   mounted() {
     this.onResize();
+    this.handleHash();
+
     this.$nextTick(() => {
       const mediaPlayer = this.$refs.mediaPlayer;
       const video = mediaPlayer.$refs.video;
 
       video.addEventListener('timeupdate', this.getCurrentTimestamp);
       video.addEventListener('ended', this.resetTimestamp);
+      window.addEventListener('hashchange', this.handleHash);
       window.addEventListener('resize', this.onResize);
     });
   },
@@ -53,6 +56,7 @@ export default {
 
     video.removeEventListener('timeupdate', this.getCurrentTimestamp);
     video.removeEventListener('ended', this.resetTimestamp);
+    window.removeEventListener('hashchange', this.handleHash);
     window.removeEventListener('resize', this.onResize);
   },
   methods: {
@@ -83,6 +87,15 @@ export default {
     resetTimestamp() {
       const video = this.$refs.mediaPlayer.$refs.video;
       video.currentTime = 0;
+    },
+    handleHash() {
+      if (/#([0-9]+).([0-9]+)/gm.test(window.location.href)) {
+        const hashedTimestamp = window.location.href.match(/#([0-9]+).([0-9]+)/gm)[0];
+        const timestamp = hashedTimestamp.substring(1);
+        const video = this.$refs.mediaPlayer.$refs.video;
+
+        video.currentTime = timestamp;
+      }
     },
   },
   data() {

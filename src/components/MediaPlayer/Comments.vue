@@ -9,7 +9,10 @@
       class="comment-li md-elevation-8 hidden"
     >
       <span class="comment md-title">{{ comment.comment }}</span>
-      <span class="authored_by md-caption">{{ comment.authored_by }}</span>
+      <span class="authored_by md-caption">{{ comment.authored_by }} </span>
+        @ <a class="md-caption" :href="'#' + comment.timestamp">
+          {{ new Date(comment.timestamp * 1000).toISOString().substr(14, 5) }}
+        </a>
     </div>
   </div>
 </template>
