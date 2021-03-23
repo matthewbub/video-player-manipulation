@@ -22,22 +22,6 @@
 - [Workflow](#workflow)
 - [Issues](https://github.com/hi-matbub/video-player-manipulation/issues)
 
-<details>
-
-<summary>
-  A message from the dev :wave:
-</summary>
-
-This challenge was an absoloute blast and quickly turned into a passion project. 
-
-Overall, Vue has been very friendly and fun to work with and suites the use case for this application well. I opted to use the HTML5 Video player and API by default for accessiblity. I also decided to throw in HTML5s Drag and Drop API to add a unique effect, which certainly has [room to scale](https://github.com/hi-matbub/video-player-manipulation/issues/45).
-
-I hope you enjoy, if you have any questions feel free to reach out! 
-
-Best,
-<a href="mailto:6matbub@gmail.com">Matthew Bub</a>
-
-</details>
 
 ## Setup
 
